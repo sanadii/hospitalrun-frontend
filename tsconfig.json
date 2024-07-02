@@ -10,7 +10,7 @@
   ],
   "compilerOptions": {
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es5",
     "module": "esnext",
     "outDir": "build",
     "lib": [
@@ -34,6 +34,7 @@
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["node"]  // Add this line
   }
 }

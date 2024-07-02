@@ -6,8 +6,8 @@ import { ResourceKey } from 'i18next'
 import resources from '../../src/shared/locales'
 
 const error = chalk.bold.red
-const warning = chalk.keyword('orange')
-const success = chalk.keyword('green')
+const warning = chalk.hex('orange')
+const success = chalk.hex('green')
 
 const checkRecursiveTranslation = (
   comparingLanguage: string,
