@@ -1,6 +1,5 @@
-import { Table } from '@hospitalrun/components'
 import React from 'react'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 import Loading from '../../shared/components/Loading'
 import useTranslator from '../../shared/hooks/useTranslator'
@@ -13,11 +12,15 @@ interface Props {
   searchRequest: PatientSearchRequest
 }
 
-const ViewPatientsTable = (props: Props) => {
+const ViewPatientsList = (props: Props) => {
   const { searchRequest } = props
   const { t } = useTranslator()
   const history = useHistory()
   const { data, status } = usePatients(searchRequest)
+
+  if (history === undefined) {
+    console.error('History is undefined. Make sure your component is wrapped with a Router.')
+  }
 
   if (data === undefined || status === 'loading') {
     return <Loading />
@@ -27,25 +30,45 @@ const ViewPatientsTable = (props: Props) => {
     return <NoPatientsExist />
   }
 
+  const handleViewAction = (id: string) => {
+    if (history && history.push) {
+      history.push(`/patients/${id}`)
+    } else {
+      console.error('History or history.push is undefined.')
+    }
+  }
+
   return (
-    <Table
-      data={data.patients}
-      getID={(row) => row.id}
-      columns={[
-        { label: t('patient.code'), key: 'code' },
-        { label: t('patient.givenName'), key: 'givenName' },
-        { label: t('patient.familyName'), key: 'familyName' },
-        { label: t('patient.sex'), key: 'sex' },
-        {
-          label: t('patient.dateOfBirth'),
-          key: 'dateOfBirth',
-          formatter: (row) => formatDate(row.dateOfBirth),
-        },
-      ]}
-      actionsHeaderText={t('actions.label')}
-      actions={[{ label: t('actions.view'), action: (row) => history.push(`/patients/${row.id}`) }]}
-    />
+    <div>
+      {data.patients.map((patient) => (
+        <div key={patient.id} className="patient-item">
+          <div>
+            <strong>{t('patient.code')}: </strong>
+            {patient.code}
+          </div>
+          <div>
+            <strong>{t('patient.givenName')}: </strong>
+            {patient.givenName}
+          </div>
+          <div>
+            <strong>{t('patient.familyName')}: </strong>
+            {patient.familyName}
+          </div>
+          <div>
+            <strong>{t('patient.sex')}: </strong>
+            {patient.sex}
+          </div>
+          <div>
+            <strong>{t('patient.dateOfBirth')}: </strong>
+            {formatDate(patient.dateOfBirth)}
+          </div>
+          <button onClick={() => handleViewAction(patient.id)}>
+            {t('actions.view')}
+          </button>
+        </div>
+      ))}
+    </div>
   )
 }
 
-export default ViewPatientsTable
+export default ViewPatientsList

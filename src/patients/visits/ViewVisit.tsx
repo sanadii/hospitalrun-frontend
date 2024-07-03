@@ -5,11 +5,14 @@ import Loading from '../../shared/components/Loading'
 import useVisit from '../hooks/useVisit'
 import VisitForm from './VisitForm'
 
+interface RouteParams {
+  visitId: string
+}
 interface Props {
   patientId: string
 }
 const ViewVisit = ({ patientId }: Props) => {
-  const { visitId } = useParams()
+  const { visitId } = useParams<RouteParams>()
 
   const { data: visit, status } = useVisit(patientId, visitId)
 

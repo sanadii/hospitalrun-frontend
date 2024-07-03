@@ -15,6 +15,10 @@ import useDeleteAppointment from '../../hooks/useDeleteAppointment'
 import AppointmentDetailForm from '../AppointmentDetailForm'
 import { getAppointmentLabel } from '../util/scheduling-appointment.util'
 
+interface RouteParams {
+  id: string
+}
+
 const ViewAppointment = () => {
   const { t } = useTranslator()
   const updateTitle = useUpdateTitle()
@@ -25,7 +29,7 @@ const ViewAppointment = () => {
     }
   }, [updateTitle, t])
 
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
   const history = useHistory()
   const [deleteMutate] = useDeleteAppointment()
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState<boolean>(false)

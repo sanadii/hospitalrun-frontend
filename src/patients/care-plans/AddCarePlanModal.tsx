@@ -50,7 +50,11 @@ const AddCarePlanModal = (props: Props) => {
       await mutate({ patientId: patient.id, carePlan })
       onClose()
     } catch (e) {
-      setCarePlanError(e)
+      if (e instanceof Error) {
+        setCarePlanError({ name: 'Error', message: e.message })
+      } else {
+        setCarePlanError({ name: 'Error', message: 'An unknown error occurred' })
+      }
     }
   }
 

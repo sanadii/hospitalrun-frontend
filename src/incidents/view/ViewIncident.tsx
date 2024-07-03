@@ -8,8 +8,12 @@ import useTranslator from '../../shared/hooks/useTranslator'
 import { RootState } from '../../shared/store'
 import ViewIncidentDetails from './ViewIncidentDetails'
 
+interface RouteParams {
+  id: string
+}
+
 const ViewIncident = () => {
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
   const { permissions } = useSelector((root: RootState) => root.user)
   const { t } = useTranslator()
   const updateTitle = useUpdateTitle()

@@ -13,8 +13,13 @@ import AddDiagnosisModal from './AddDiagnosisModal'
 import ViewDiagnoses from './ViewDiagnoses'
 import ViewDiagnosis from './ViewDiagnosis'
 
+interface RouteParams {
+  id: string
+}
+
+
 const Diagnoses = () => {
-  const { id: patientId } = useParams()
+  const { id: patientId } = useParams<RouteParams>()
   const { t } = useTranslator()
   const { permissions } = useSelector((state: RootState) => state.user)
   const { data, status } = usePatient(patientId)

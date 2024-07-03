@@ -6,9 +6,14 @@ import Loading from '../../shared/components/Loading'
 import useTranslator from '../../shared/hooks/useTranslator'
 import usePatientNote from '../hooks/usePatientNote'
 
+interface RouteParams {
+  id: string
+  noteId: string
+}
+
 const ViewNote = () => {
   const { t } = useTranslator()
-  const { noteId, id: patientId } = useParams()
+  const { noteId, id: patientId } = useParams<RouteParams>()
   const { data, status } = usePatientNote(patientId, noteId)
 
   if (data === undefined || status === 'loading') {

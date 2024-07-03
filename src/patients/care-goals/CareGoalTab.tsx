@@ -12,8 +12,14 @@ import AddCareGoalModal from './AddCareGoalModal'
 import ViewCareGoal from './ViewCareGoal'
 import ViewCareGoals from './ViewCareGoals'
 
+// Define an interface for the route parameters
+interface RouteParams {
+  id: string
+}
+
+
 const CareGoalTab = () => {
-  const { id: patientId } = useParams()
+  const { id: patientId } = useParams<RouteParams>()
   const { t } = useTranslator()
   const { permissions } = useSelector((state: RootState) => state.user)
   const { data, status } = usePatient(patientId)

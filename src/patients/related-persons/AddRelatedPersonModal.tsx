@@ -65,7 +65,11 @@ const AddRelatedPersonModal = (props: Props) => {
       await mutate({ patientId, relatedPerson })
       onCloseButtonClick()
     } catch (e) {
-      setRelatedPersonError(e)
+      if (e instanceof Error) {
+        setRelatedPersonError({ name: 'relatedPersonError', message: e.message })
+      } else {
+        setRelatedPersonError({ name: 'relatedPersonError', message: 'An unknown error occurred' })
+      }
     }
   }
 
@@ -89,15 +93,15 @@ const AddRelatedPersonModal = (props: Props) => {
               searchAccessor="fullName"
               placeholder={t('patient.relatedPerson')}
               onChange={onPatientSelect}
-              isInvalid={!!relatedPersonError?.relatedPersonError}
+              isInvalid={!!relatedPersonError?.message}
               onSearch={onSearch}
               renderMenuItemChildren={(p: Patient) => (
                 <div>{`${p.fullName} - ${formattedDate(p.dateOfBirth)} (${p.code})`}</div>
               )}
             />
-            {relatedPersonError?.relatedPersonError && (
+            {relatedPersonError?.message && (
               <div className="text-left ml-3 mt-1 text-small text-danger invalid-feedback d-block related-person-feedback">
-                {t(relatedPersonError?.relatedPersonError)}
+                {t(relatedPersonError?.message)}
               </div>
             )}
           </div>
@@ -110,8 +114,8 @@ const AddRelatedPersonModal = (props: Props) => {
             label={t('patient.relatedPersons.relationshipType')}
             value={relatedPerson.type}
             isEditable
-            isInvalid={!!relatedPersonError?.relationshipTypeError}
-            feedback={t(relatedPersonError?.relationshipTypeError)}
+            isInvalid={!!relatedPersonError?.message}
+            feedback={t(relatedPersonError?.message)}
             isRequired
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               onInputElementChange(event, 'type')

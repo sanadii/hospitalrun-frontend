@@ -1,9 +1,27 @@
 {
-  "include": ["./**/*.ts"],
   "compilerOptions": {
-    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["dom", "es2015"],
+    "skipLibCheck": true,
+    "strict": true,
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "module": "nodenext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "outDir": "../bin",
-    "target": "es5",
-    "esModuleInterop": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
 }

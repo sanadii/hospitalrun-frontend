@@ -6,8 +6,13 @@ import useCarePlan from '../hooks/useCarePlan'
 import usePatient from '../hooks/usePatient'
 import CarePlanForm from './CarePlanForm'
 
+type CarePlanParams = {
+  carePlanId: string
+  patientId: string
+}
+
 const ViewCarePlan = () => {
-  const { carePlanId, id: patientId } = useParams()
+  const { carePlanId, patientId } = useParams<CarePlanParams>()
   const { data: patient, status: patientStatus } = usePatient(patientId)
   const { data: carePlan, status: carePlanStatus } = useCarePlan(patientId, carePlanId)
 

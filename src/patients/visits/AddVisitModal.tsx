@@ -29,7 +29,7 @@ const AddVisitModal = ({ show, onCloseButtonClick, patientId }: Props) => {
 
   const [mutate] = useAddVisit()
   const [visit, setVisit] = useState<RequestVisit>(initialVisitState)
-  const [error, setError] = useState<Error | undefined>(undefined)
+  const [error, setError] = useState<{ message: string } | undefined>(undefined)
 
   useEffect(() => {
     setVisit(initialVisitState)
@@ -47,7 +47,11 @@ const AddVisitModal = ({ show, onCloseButtonClick, patientId }: Props) => {
       await mutate({ patientId, visit })
       onClose()
     } catch (e) {
-      setError(e)
+      if (e instanceof Error) {
+        setError({ message: e.message })
+      } else {
+        setError({ message: 'An unknown error occurred' })
+      }
     }
   }
 

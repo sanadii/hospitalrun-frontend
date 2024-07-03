@@ -49,7 +49,11 @@ const AddCareGoalModal = (props: Props) => {
       await mutate({ patientId: patient.id, careGoal })
       onClose()
     } catch (e) {
-      setCareGoalError(e)
+      if (e instanceof Error) {
+        setCareGoalError({ name: 'Error', message: e.message })
+      } else {
+        setCareGoalError({ name: 'Error', message: 'An unknown error occurred' })
+      }
     }
   }
 

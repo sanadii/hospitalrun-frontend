@@ -12,8 +12,13 @@ import AddCarePlanModal from './AddCarePlanModal'
 import ViewCarePlan from './ViewCarePlan'
 import ViewCarePlans from './ViewCarePlans'
 
+// Define an interface for the route parameters
+interface RouteParams {
+  id: string
+}
+
 const CarePlanTab = () => {
-  const { id: patientId } = useParams()
+  const { id: patientId } = useParams<RouteParams>()
   const { t } = useTranslator()
   const { permissions } = useSelector((state: RootState) => state.user)
   const { data, status } = usePatient(patientId)

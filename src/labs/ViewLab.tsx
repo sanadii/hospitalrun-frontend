@@ -20,11 +20,15 @@ import useLab from './hooks/useLab'
 import useUpdateLab from './hooks/useUpdateLab'
 import { LabError } from './utils/validate-lab'
 
+interface RouteParams {
+  id: string
+}
+
 const getTitle = (patient: Patient | undefined, lab: Lab | undefined) =>
   patient && lab ? `${lab.type} for ${patient.fullName}(${lab.code})` : ''
 
 const ViewLab = () => {
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
   const { t } = useTranslator()
   const history = useHistory()
   const { permissions } = useSelector((state: RootState) => state.user)
@@ -133,9 +137,15 @@ const ViewLab = () => {
       }
       setError(undefined)
     } catch (e) {
-      setError(e)
+      if (e instanceof LabError) {
+        setError(e)
+      } else {
+        console.error(e)
+        setError({ message: 'An unexpected error occurred' } as LabError)
+      }
     }
   }
+  
 
   const onCancel = async () => {
     if (labToView) {

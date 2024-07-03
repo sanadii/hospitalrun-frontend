@@ -4,18 +4,17 @@ import PouchDB from 'pouchdb'
 import PouchAuth from 'pouchdb-authentication'
 import PouchdbFind from 'pouchdb-find'
 import RelationalPouch from 'relational-pouch'
+import PouchDBMemoryAdapter from 'pouchdb-adapter-memory'
+import PouchDBQuickSearch from 'pouchdb-quick-search'
 
-const memoryAdapter = require('pouchdb-adapter-memory')
-const search = require('pouchdb-quick-search')
-
-PouchDB.plugin(search)
-PouchDB.plugin(memoryAdapter)
+PouchDB.plugin(PouchDBQuickSearch)
+PouchDB.plugin(PouchDBMemoryAdapter)
 PouchDB.plugin(RelationalPouch)
 PouchDB.plugin(PouchdbFind)
 PouchDB.plugin(PouchAuth)
 
-let serverDb
-let localDb
+let serverDb: PouchDB.Database
+let localDb: PouchDB.Database
 
 if (process.env.NODE_ENV === 'test') {
   serverDb = new PouchDB('hospitalrun', { skip_setup: true, adapter: 'memory' })
@@ -69,5 +68,7 @@ export const schema = [
     relations: { patient: { belongsTo: 'patient' } },
   },
 ]
-export const relationalDb = localDb.setSchema(schema)
+
+// Use type assertion to tell TypeScript that `setSchema` method exists
+export const relationalDb = (localDb as any).setSchema(schema)
 export const remoteDb = serverDb as PouchDB.Database

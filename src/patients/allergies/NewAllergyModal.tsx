@@ -34,9 +34,15 @@ const NewAllergyModal = (props: NewAllergyModalProps) => {
       await mutate({ patientId, allergy })
       onCloseButtonClick()
     } catch (e) {
-      setAllergyError(e)
+      if (e instanceof AllergyError) {
+        setAllergyError(e)
+      } else {
+        console.error(e)
+        setAllergyError({ message: 'An unexpected error occurred' } as AllergyError)
+      }
     }
   }
+  
 
   const onClose = () => {
     onCloseButtonClick()

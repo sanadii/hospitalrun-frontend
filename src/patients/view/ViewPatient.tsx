@@ -32,6 +32,10 @@ import { getPatientFullName } from '../util/patient-util'
 import VisitTab from '../visits/VisitTab'
 import ImportantPatientInfo from './ImportantPatientInfo'
 
+interface RouteParams {
+  id: string
+}
+
 const ViewPatient = () => {
   const { t } = useTranslator()
   const history = useHistory()
@@ -39,7 +43,7 @@ const ViewPatient = () => {
   const { path } = useRouteMatch()
   const setButtonToolBar = useButtonToolbarSetter()
 
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
   const { permissions } = useSelector((state: RootState) => state.user)
   const { data: patient, status } = usePatient(id)
 

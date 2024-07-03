@@ -6,9 +6,15 @@ import Loading from '../../shared/components/Loading'
 import useTranslator from '../../shared/hooks/useTranslator'
 import useAllergy from '../hooks/useAllergy'
 
+// Define the interface for the route parameters
+interface RouteParams {
+  allergyId: string;
+  id: string;
+}
+
 const ViewAllergy = () => {
   const { t } = useTranslator()
-  const { allergyId, id: patientId } = useParams()
+  const { allergyId, id: patientId } = useParams<RouteParams>()
   const { data, status } = useAllergy(patientId, allergyId)
 
   if (data === undefined || status === 'loading') {

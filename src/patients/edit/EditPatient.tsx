@@ -13,11 +13,15 @@ import usePatient from '../hooks/usePatient'
 import { updatePatient } from '../patient-slice'
 import { getPatientCode, getPatientFullName } from '../util/patient-util'
 
+interface RouteParams {
+  id: string
+}
+
 const EditPatient = () => {
   const { t } = useTranslator()
   const history = useHistory()
   const dispatch = useDispatch()
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
 
   const { data: givenPatient, status } = usePatient(id)
   const [patient, setPatient] = useState({} as Patient)

@@ -33,10 +33,15 @@ const NewNoteModal = (props: Props) => {
   const onSaveButtonClick = async () => {
     try {
       await mutate({ patientId, note })
+      setNoteError(undefined) // Clear error state on successful save
       setNote(initialNoteState)
       onCloseButtonClick()
     } catch (e) {
-      setNoteError(e)
+      if (e instanceof Error) {
+        setNoteError({ name: 'Error', message: e.message })
+      } else {
+        setNoteError({ name: 'UnknownError', message: 'An unknown error occurred' })
+      }
     }
   }
 
@@ -58,8 +63,8 @@ const NewNoteModal = (props: Props) => {
               name="noteTextField"
               label={t('patient.note')}
               value={note.text}
-              isInvalid={!!noteError?.noteError}
-              feedback={t(noteError?.noteError || '')}
+              isInvalid={!!noteError?.message}
+              feedback={t(noteError?.message || '')}
               onChange={onNoteTextChange}
             />
           </div>

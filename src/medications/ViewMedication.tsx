@@ -16,11 +16,15 @@ import Permissions from '../shared/model/Permissions'
 import { RootState } from '../shared/store'
 import { cancelMedication, updateMedication, fetchMedication } from './medication-slice'
 
+interface RouteParams {
+  id: string
+}
+
 const getTitle = (patient: Patient | undefined, medication: Medication | undefined) =>
   patient && medication ? `${medication.medication} for ${patient.fullName}` : ''
 
 const ViewMedication = () => {
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
   const { t } = useTranslator()
   const history = useHistory()
   const dispatch = useDispatch()

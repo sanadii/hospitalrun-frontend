@@ -1,6 +1,10 @@
 import { Parser } from 'json2csv'
 
-export function getCSV<T>(data: T[]): string {
+export function getCSV<T extends object>(data: T[]): string {
+  if (data.length === 0) {
+    return ''
+  }
+  
   const fields = Object.keys(data[0])
   const opts = { fields }
   const parser = new Parser(opts)
@@ -18,5 +22,5 @@ export function DownloadLink(data: string, fileName: string) {
   document.body.appendChild(element)
   element.click()
 
-  return document.body.removeChild(element)
+  document.body.removeChild(element)
 }

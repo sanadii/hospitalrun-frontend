@@ -38,12 +38,17 @@ const AddDiagnosisModal = (props: NewDiagnosisModalProps) => {
   const onDiagnosisChange = (newDiagnosis: Partial<Diagnosis>) => {
     setDiagnosis(newDiagnosis as Diagnosis)
   }
+
   const onSaveButtonClick = async () => {
     try {
       await mutate({ diagnosis, patientId: patient.id })
       onCloseButtonClick()
     } catch (e) {
-      setDiagnosisError(e)
+      if (e instanceof Error) {
+        setDiagnosisError({ name: 'Diagnosis Error', message: e.message })
+      } else {
+        setDiagnosisError({ name: 'Diagnosis Error', message: 'An unknown error occurred' })
+      }
     }
   }
 

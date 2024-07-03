@@ -59,9 +59,10 @@ const ReportIncident = () => {
       const data = await mutate(incident as Incident)
       history.push(`/incidents/${data?.id}`)
     } catch (e) {
-      setError(e)
+      setError(e as IncidentError)
     }
   }
+  
 
   const onCancel = () => {
     history.push('/incidents')

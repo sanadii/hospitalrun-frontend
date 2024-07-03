@@ -112,10 +112,10 @@ const NewImagingRequest = () => {
       await mutate(newImagingRequest)
       history.push(`/imaging`)
     } catch (e) {
-      setError(e)
+      setError(e as ImagingRequestError)
     }
   }
-
+  
   const onCancel = () => {
     history.push('/imaging')
   }

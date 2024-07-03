@@ -13,9 +13,13 @@ import useUpdateAppointment from '../../hooks/useUpdateAppointment'
 import AppointmentDetailForm from '../AppointmentDetailForm'
 import { getAppointmentLabel } from '../util/scheduling-appointment.util'
 
+interface RouteParams {
+  id: string
+}
+
 const EditAppointment = () => {
   const { t } = useTranslator()
-  const { id } = useParams()
+  const { id } = useParams<RouteParams>()
 
   const updateTitle = useUpdateTitle()
   useEffect(() => {
