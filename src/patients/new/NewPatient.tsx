@@ -1,4 +1,4 @@
-import { Button, Toast } from '@hospitalrun/components'
+import { Button, Toast } from 'components'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'

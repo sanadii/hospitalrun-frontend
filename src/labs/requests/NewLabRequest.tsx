@@ -7,7 +7,7 @@ import {
   Toast,
   Column,
   Row,
-} from '@hospitalrun/components'
+} from 'components'
 import format from 'date-fns/format'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'

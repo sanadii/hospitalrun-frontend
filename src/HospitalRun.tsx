@@ -1,4 +1,4 @@
-import { Toaster } from '@hospitalrun/components'
+import { Toaster } from 'components'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'

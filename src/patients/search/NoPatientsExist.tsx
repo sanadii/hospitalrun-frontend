@@ -1,4 +1,4 @@
-import { Button, Icon, Typography } from '@hospitalrun/components'
+import { Button, Icon, Typography } from 'components'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 

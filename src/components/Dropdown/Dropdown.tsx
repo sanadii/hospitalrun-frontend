@@ -2,7 +2,7 @@ import React from 'react'
 import DropdownRB from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 
-import { ButtonVariant } from '../../interfaces'
+import { ButtonVariant } from '../interfaces'
 import { Item } from './interfaces'
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
   /** Determines the horizontal alignment of the dropdown items */
   alignRight?: boolean
   /** Determines the dropdown toggle button size */
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'lg'
   /** Determines the dropdown's direction */
   direction?: 'down' | 'up' | 'left' | 'right'
   /** Determines the dropdown's custom style */
@@ -56,6 +56,7 @@ const Dropdown = (props: Props) => {
     </DropdownButton>
   )
 }
+
 Dropdown.defaultProps = {
   id: `dropdown${Math.floor(Math.random() * 10000)}`,
   variant: 'light',

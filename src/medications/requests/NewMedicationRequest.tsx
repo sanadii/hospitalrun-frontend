@@ -1,4 +1,4 @@
-import { Select, Typeahead, Label, Button, Alert, Column, Row } from '@hospitalrun/components'
+import { Select, Typeahead, Label, Button, Alert, Column, Row } from 'components'
 import { set } from 'lodash'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'

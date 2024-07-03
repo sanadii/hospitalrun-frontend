@@ -1,4 +1,4 @@
-import { Modal } from '@hospitalrun/components'
+import { Modal } from 'components'
 import React, { useState, useEffect } from 'react'
 
 import useTranslator from '../../shared/hooks/useTranslator'

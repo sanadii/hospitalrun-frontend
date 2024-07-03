@@ -1,4 +1,4 @@
-import { Row, Column } from '@hospitalrun/components'
+import { Row, Column } from 'components'
 import React, { useEffect } from 'react'
 
 import { useUpdateTitle } from '../page-header/title/TitleContext'

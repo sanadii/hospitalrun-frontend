@@ -1,4 +1,4 @@
-import { Panel, Spinner, TabsHeader, Tab, Button } from '@hospitalrun/components'
+import { Panel, Spinner, TabsHeader, Tab, Button } from 'components'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import {

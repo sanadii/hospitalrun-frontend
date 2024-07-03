@@ -1,4 +1,4 @@
-import { Modal, Alert } from '@hospitalrun/components'
+import { Modal, Alert } from 'components'
 import React, { useState, useEffect } from 'react'
 
 import TextInputWithLabelFormGroup from '../../shared/components/input/TextInputWithLabelFormGroup'

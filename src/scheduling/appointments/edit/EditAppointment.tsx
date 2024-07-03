@@ -1,4 +1,4 @@
-import { Spinner, Button, Toast } from '@hospitalrun/components'
+import { Spinner, Button, Toast } from 'components'
 import isEmpty from 'lodash/isEmpty'
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'

@@ -1,4 +1,4 @@
-import { Spinner } from '@hospitalrun/components'
+import { Spinner } from 'components'
 import React from 'react'
 
 const Loading = () => <Spinner color="blue" loading size={20} type="BeatLoader" />

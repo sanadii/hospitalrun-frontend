@@ -1,14 +1,6 @@
 {
-  "include": [
-    "src",
-    "types",
-    "./setupTests.js"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
   "compilerOptions": {
+    "baseUrl": "src",
     "moduleResolution": "node",
     "target": "es5",
     "module": "esnext",
@@ -35,6 +27,17 @@
     "noEmit": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"]  // Add this line
-  }
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "src",
+    "types",
+    "./setupTests.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

@@ -1,4 +1,4 @@
-import { Select, Label, Panel, Checkbox, Alert } from '@hospitalrun/components'
+import { Select, Label, Panel, Checkbox, Alert } from 'components'
 import differenceInYears from 'date-fns/differenceInYears'
 import startOfDay from 'date-fns/startOfDay'
 import subYears from 'date-fns/subYears'

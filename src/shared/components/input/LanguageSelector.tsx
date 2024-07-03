@@ -1,4 +1,4 @@
-import { Select, Label } from '@hospitalrun/components'
+import { Select, Label } from 'components'
 import sortBy from 'lodash/sortBy'
 import React, { useState } from 'react'
 

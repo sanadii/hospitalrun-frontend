@@ -1,3 +1,16 @@
+export interface Item {
+  /** The unique key for the item */
+  key?: string
+  /** The event key for the item */
+  eventKey?: string
+  /** The text to display for the item */
+  text: string
+  /** The onClick handler for the item */
+  onClick?: () => void
+  /** The custom style for the item */
+  style?: React.CSSProperties
+}
+
 export interface Data {
   /** the x data point */
   x: any

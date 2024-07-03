@@ -1,6 +1,6 @@
-import ChartJs, {
+import Chart, {
   ChartData,
-  ChartDataSets,
+  ChartDataset,
   Point,
   CommonAxe,
   ChartConfiguration,
@@ -9,7 +9,7 @@ import ChartJs, {
 
 import { Dataset, Axis } from './interfaces'
 
-export function getAxisType(type: string): ChartJs.ScaleType {
+export function getAxisType(type: string): Chart.ScaleType {
   if (type === 'category') {
     return 'category'
   }
@@ -23,15 +23,15 @@ export function getAxisType(type: string): ChartJs.ScaleType {
   return 'category'
 }
 
-export function getAxisLabel(item: Axis): ChartJs.ScaleTitleOptions {
+export function getAxisLabel(item: Axis): Chart.ScaleTitleOptions {
   return {
     display: !!item.label,
     labelString: item.label,
   }
 }
 
-export function axisMapper(item: Axis): ChartJs.CommonAxe {
-  const axis: ChartJs.CommonAxe = {
+export function axisMapper(item: Axis): Chart.CommonAxe {
+  const axis: Chart.CommonAxe = {
     display: !!item.label,
     scaleLabel: getAxisLabel(item),
     type: getAxisType(item.type),
@@ -41,7 +41,7 @@ export function axisMapper(item: Axis): ChartJs.CommonAxe {
   }
 
   if (item.type === 'time') {
-    const timeScale: ChartJs.TimeScale = {
+    const timeScale: Chart.TimeScale = {
       unit: item.timeFormat,
       stepSize: item.timeStepSize,
     }
@@ -65,7 +65,7 @@ export function getAxes(axes: Axis[], stacked: boolean): CommonAxe[] {
   return chartAxes
 }
 
-export function getChartDataset(dataset: Dataset): ChartDataSets {
+export function getChartDataset(dataset: Dataset): ChartDataset {
   const { label } = dataset
   const data: Point[] = []
   const backgroundColor: string[] = []
@@ -99,7 +99,7 @@ export function getChartDataset(dataset: Dataset): ChartDataSets {
   }
 }
 
-export function getChartDatasets(datasets: Dataset[]): ChartDataSets[] {
+export function getChartDataset(datasets: Dataset[]): ChartDataset[] {
   return datasets.map(getChartDataset)
 }
 
@@ -119,7 +119,7 @@ export function getLabelsFromDataset(datasets: Dataset[]) {
 export function getChartData(datasets: Dataset[]): ChartData {
   return {
     labels: getLabelsFromDataset(datasets),
-    datasets: getChartDatasets(datasets),
+    datasets: getChartDataset(datasets),
   }
 }
 

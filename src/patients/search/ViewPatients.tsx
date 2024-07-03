@@ -1,4 +1,4 @@
-import { Button } from '@hospitalrun/components'
+import { Button } from 'components'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'

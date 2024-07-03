@@ -1,4 +1,4 @@
-import { LineGraph, Spinner } from '@hospitalrun/components'
+import { LineGraph, Spinner } from 'components'
 import React, { useEffect, useState } from 'react'
 
 import { useUpdateTitle } from '../../page-header/title/TitleContext'

@@ -1,4 +1,4 @@
-import { List, ListItem, Icon } from '@hospitalrun/components'
+import { List, ListItem, Icon } from 'components'
 import React, { useState, CSSProperties } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, useHistory } from 'react-router-dom'

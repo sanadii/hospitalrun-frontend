@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import BootstrapButton from 'react-bootstrap/Button'
 
-import { ButtonVariant } from '../../interfaces'
+import { ButtonVariant } from '../interfaces'
 import { Icon } from '../Icon'
 import { IconType } from '../Icon/interfaces'
 import { ButtonType } from './interfaces'

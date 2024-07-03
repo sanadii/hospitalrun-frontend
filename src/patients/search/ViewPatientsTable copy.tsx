@@ -1,4 +1,4 @@
-import { Table } from '@hospitalrun/components'
+import { Table } from 'components'
 import React from 'react'
 import { useHistory } from 'react-router'
 

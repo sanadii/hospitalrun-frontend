@@ -1,4 +1,4 @@
-import { Select, Typeahead, Label, Alert } from '@hospitalrun/components'
+import { Select, Typeahead, Label, Alert } from 'components'
 import React from 'react'
 
 import DateTimePickerWithLabelFormGroup from '../../shared/components/input/DateTimePickerWithLabelFormGroup'

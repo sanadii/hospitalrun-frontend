@@ -1,5 +1,5 @@
-import * as components from '@hospitalrun/components'
-import { Toaster } from '@hospitalrun/components'
+import * as components from 'components'
+import { Toaster } from 'components'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history'

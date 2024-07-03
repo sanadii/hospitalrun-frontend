@@ -1,4 +1,4 @@
-import { Toaster } from '@hospitalrun/components'
+import { Toaster } from 'components'
 import {
   act,
   render,

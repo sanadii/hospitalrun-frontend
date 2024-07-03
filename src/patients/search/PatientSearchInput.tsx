@@ -1,4 +1,4 @@
-import { TextInput } from '@hospitalrun/components'
+import { TextInput } from 'components'
 import React, { useEffect, useState } from 'react'
 
 import useDebounce from '../../shared/hooks/useDebounce'

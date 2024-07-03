@@ -1,4 +1,4 @@
-import { Label, DateTimePicker } from '@hospitalrun/components'
+import { Label, DateTimePicker } from 'components'
 import React from 'react'
 
 interface Props {

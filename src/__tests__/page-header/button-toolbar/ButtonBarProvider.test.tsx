@@ -1,4 +1,4 @@
-import { Button } from '@hospitalrun/components'
+import { Button } from 'components'
 import { renderHook, act } from '@testing-library/react-hooks'
 import React from 'react'
 

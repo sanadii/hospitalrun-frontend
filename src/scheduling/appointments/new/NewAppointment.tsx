@@ -1,4 +1,4 @@
-import { Button, Spinner, Toast } from '@hospitalrun/components'
+import { Button, Spinner, Toast } from 'components'
 import addMinutes from 'date-fns/addMinutes'
 import roundToNearestMinutes from 'date-fns/roundToNearestMinutes'
 import isEmpty from 'lodash/isEmpty'

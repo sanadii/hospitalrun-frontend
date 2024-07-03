@@ -1,4 +1,4 @@
-import { Button, Table, Alert } from '@hospitalrun/components'
+import { Button, Table, Alert } from 'components'
 import format from 'date-fns/format'
 import React from 'react'
 import { useHistory } from 'react-router-dom'

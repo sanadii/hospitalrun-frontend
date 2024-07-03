@@ -1,4 +1,4 @@
-import { Select, Label, Spinner, Row, Column, Icon } from '@hospitalrun/components'
+import { Select, Label, Spinner, Row, Column, Icon } from 'components'
 import React, { useEffect, ReactElement } from 'react'
 
 import { SelectOption } from '../shared/components/input/SelectOption'

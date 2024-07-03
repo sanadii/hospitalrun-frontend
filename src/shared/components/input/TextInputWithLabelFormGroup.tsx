@@ -1,4 +1,4 @@
-import { TextInput, Label } from '@hospitalrun/components'
+import { TextInput, Label } from 'components'
 import React from 'react'
 
 interface Props {

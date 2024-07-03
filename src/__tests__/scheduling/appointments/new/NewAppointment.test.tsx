@@ -1,4 +1,4 @@
-import { Toaster } from '@hospitalrun/components'
+import { Toaster } from 'components'
 import { render, screen, waitFor, fireEvent, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import addMinutes from 'date-fns/addMinutes'

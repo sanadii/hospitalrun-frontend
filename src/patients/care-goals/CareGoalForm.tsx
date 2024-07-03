@@ -1,4 +1,4 @@
-import { Select, Label, Alert, Row, Column } from '@hospitalrun/components'
+import { Select, Label, Alert, Row, Column } from 'components'
 import React, { useState } from 'react'
 
 import DatePickerWithLabelFormGroup from '../../shared/components/input/DatePickerWithLabelFormGroup'

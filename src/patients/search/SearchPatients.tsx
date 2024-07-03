@@ -1,4 +1,4 @@
-import { Column, Container, Row } from '@hospitalrun/components'
+import { Column, Container, Row } from 'components'
 import React, { useCallback, useState } from 'react'
 
 import PatientSearchRequest from '../models/PatientSearchRequest'

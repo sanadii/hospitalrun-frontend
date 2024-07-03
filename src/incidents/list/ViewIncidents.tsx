@@ -1,4 +1,4 @@
-import { Select, Label, Button, Container, Row, Column } from '@hospitalrun/components'
+import { Select, Label, Button, Container, Row, Column } from 'components'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 

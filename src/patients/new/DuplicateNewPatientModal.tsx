@@ -1,4 +1,4 @@
-import { Modal, Alert } from '@hospitalrun/components'
+import { Modal, Alert } from 'components'
 import React from 'react'
 import { Link } from 'react-router-dom'
 

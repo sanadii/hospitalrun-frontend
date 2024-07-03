@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { Spinner } from '@hospitalrun/components'
+import { Spinner } from 'components'
 import React, { Suspense, useEffect, useState } from 'react'
 import { ReactQueryDevtools } from 'react-query-devtools'
 import { useDispatch } from 'react-redux'

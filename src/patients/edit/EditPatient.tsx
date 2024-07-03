@@ -1,4 +1,4 @@
-import { Spinner, Button, Toast } from '@hospitalrun/components'
+import { Spinner, Button, Toast } from 'components'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'

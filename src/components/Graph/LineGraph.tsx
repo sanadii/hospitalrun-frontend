@@ -1,103 +1,76 @@
-import ChartJs from 'chart.js'
+import { Chart } from 'chart.js'
 import React, { Component } from 'react'
 
 import { Axis, Dataset } from './interfaces'
-import * as util from './util'
 
 interface Props {
-  /** Determines if the area under the line should be filled with the background color from the dataset */
-  fill?: boolean
-  /** Determines if the the Line Graphs should be displayed in a stacked manner */
-  stacked?: boolean
-
-  /** the title of the graph for the legend */
-  title?: string
-  /** the font size for the title */
-  titleFontSize?: number
-  /** the color for the title */
-  titleFontColor?: string
-  /** the datasets for the graph */
   datasets: Dataset[]
-  /** The width of the graph */
+  xAxes?: Axis[]
+  yAxes?: Axis[]
+  title?: string
+  titleFontSize?: number
+  titleFontColor?: string
   width?: string
-  /** The height of the graph */
   height?: string
-
-  /** the list of x axis information */
-  xAxes: Axis[]
-  /** the list of y axis information */
-  yAxes: Axis[]
 }
 
-/**
- * A customizable Line Graph component built on chart.js
- */
 class LineGraph extends Component<Props, Record<string, unknown>> {
-  graph: ChartJs | null
-
-  chart: HTMLCanvasElement | null
-
-  constructor(props: Props) {
-    super(props)
-    this.graph = null // initalzied in componentDidMount
-    this.chart = null // initalzied in componentDidMount
-  }
+  chartRef = React.createRef<HTMLCanvasElement>()
+  graph: Chart | null = null
 
   componentDidMount() {
-    const {
-      title,
-      titleFontSize,
-      titleFontColor,
-      datasets,
-      stacked,
-      fill,
-      yAxes,
-      xAxes,
-    } = this.props
+    const { datasets, xAxes, yAxes, title, titleFontSize, titleFontColor } = this.props
+    const myChartRef = this.chartRef.current?.getContext('2d')
 
-    const type = 'line'
-    let isFill = false
-    if (fill) {
-      isFill = fill
+    if (myChartRef) {
+      this.graph = new Chart(myChartRef, {
+        type: 'line',
+        data: {
+          datasets: datasets.map((dataset) => ({
+            label: dataset.label,
+            data: dataset.data.map((dataPoint) => ({
+              x: dataPoint.x,
+              y: dataPoint.y,
+            })),
+            backgroundColor: dataset.backgroundColor,
+            borderColor: dataset.borderColor,
+          })),
+        },
+        options: {
+          scales: {
+            xAxes: xAxes?.map((axis) => ({
+              type: axis.type,
+              scaleLabel: {
+                display: true,
+                labelString: axis.label,
+              },
+              time: axis.type === 'time' ? {
+                unit: axis.timeFormat,
+                stepSize: axis.timeStepSize,
+              } : undefined,
+            })) || [],
+            yAxes: yAxes?.map((axis) => ({
+              type: axis.type,
+              scaleLabel: {
+                display: true,
+                labelString: axis.label,
+              },
+            })) || [],
+          },
+          title: {
+            display: !!title,
+            text: title,
+            fontSize: titleFontSize,
+            fontColor: titleFontColor,
+          },
+        },
+      })
     }
-
-    const config = util.getCommonChartConfigurations(
-      type,
-      title,
-      titleFontSize,
-      titleFontColor,
-      datasets,
-    )
-    if (config && config.data && config.data.datasets) {
-      for (let i = 0; i < datasets.length; i += 1) {
-        config.data.datasets[i].fill = isFill
-        config.data.datasets[i].backgroundColor = datasets[i].backgroundColor
-        config.data.datasets[i].borderColor = datasets[i].borderColor
-      }
-    }
-
-    if (config && config.options) {
-      const isStacked = !!stacked
-      const scales = {
-        xAxes: util.getAxes(xAxes, false),
-        yAxes: util.getAxes(yAxes, isStacked),
-      }
-
-      config.options.scales = scales
-    }
-
-    this.graph = new ChartJs(this.chart as HTMLCanvasElement, config)
   }
 
   render() {
-    return (
-      <canvas
-        ref={(chart) => {
-          this.chart = chart
-          return this.chart
-        }}
-      />
-    )
+    const { width, height } = this.props
+    return <canvas ref={this.chartRef} width={width} height={height} />
   }
 }
 

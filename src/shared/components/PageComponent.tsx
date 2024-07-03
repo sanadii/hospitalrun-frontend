@@ -1,4 +1,4 @@
-import { Button, Select } from '@hospitalrun/components'
+import { Button, Select } from 'components'
 import React from 'react'
 
 import useTranslator from '../hooks/useTranslator'

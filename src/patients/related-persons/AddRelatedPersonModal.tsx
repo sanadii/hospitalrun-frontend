@@ -1,4 +1,4 @@
-import { Modal, Alert, Typeahead, Label } from '@hospitalrun/components'
+import { Modal, Alert, Typeahead, Label } from 'components'
 import format from 'date-fns/format'
 import React, { useState } from 'react'
 

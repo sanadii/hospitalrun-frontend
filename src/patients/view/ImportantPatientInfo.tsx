@@ -1,4 +1,4 @@
-import { Row, Table, Button, Typography } from '@hospitalrun/components'
+import { Row, Table, Button, Typography } from 'components'
 import React, { CSSProperties, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'

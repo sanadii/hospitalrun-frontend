@@ -1,4 +1,4 @@
-import { Alert, List, ListItem } from '@hospitalrun/components'
+import { Alert, List, ListItem } from 'components'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 

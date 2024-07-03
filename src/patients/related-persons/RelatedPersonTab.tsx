@@ -1,4 +1,4 @@
-import { Button, Alert, Spinner, Table } from '@hospitalrun/components'
+import { Button, Alert, Spinner, Table } from 'components'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'

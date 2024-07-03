@@ -1,4 +1,4 @@
-import { Select, Label, Row, Column } from '@hospitalrun/components'
+import { Select, Label, Row, Column } from 'components'
 import React, { ChangeEvent } from 'react'
 
 import { SelectOption } from '../../shared/components/input/SelectOption'

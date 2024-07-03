@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React, { CSSProperties, ReactElement } from 'react'
 
-import { ColorVariant } from '../../interfaces'
+import { ColorVariant } from '../interfaces'
 
 import './callout.scss'
 

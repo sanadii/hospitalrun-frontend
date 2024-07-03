@@ -1,4 +1,4 @@
-import { Button, Column, Row, Spinner } from '@hospitalrun/components'
+import { Button, Column, Row, Spinner } from 'components'
 import format from 'date-fns/format'
 import React from 'react'
 import { useHistory } from 'react-router'

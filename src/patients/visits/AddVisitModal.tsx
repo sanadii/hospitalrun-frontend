@@ -1,4 +1,4 @@
-import { Modal } from '@hospitalrun/components'
+import { Modal } from 'components'
 import addMonths from 'date-fns/addMonths'
 import React, { useState, useEffect } from 'react'
 

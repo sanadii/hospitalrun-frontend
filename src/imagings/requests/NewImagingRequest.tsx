@@ -1,4 +1,4 @@
-import { Select, Typeahead, Label, Button, Alert, Column, Row } from '@hospitalrun/components'
+import { Select, Typeahead, Label, Button, Alert, Column, Row } from 'components'
 import format from 'date-fns/format'
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'

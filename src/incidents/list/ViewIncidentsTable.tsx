@@ -1,4 +1,4 @@
-import { Spinner, Table, Dropdown } from '@hospitalrun/components'
+import { Spinner, Table, Dropdown } from 'components'
 import format from 'date-fns/format'
 import React from 'react'
 import { useHistory } from 'react-router'

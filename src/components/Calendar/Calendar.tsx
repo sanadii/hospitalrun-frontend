@@ -1,11 +1,9 @@
-import { EventApi } from '@fullcalendar/core'
+import { EventApi, EventInput } from '@fullcalendar/core'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import React from 'react'
-
-import Event from './interfaces'
 
 import '@fullcalendar/core/main.css'
 import '@fullcalendar/daygrid/main.css'
@@ -16,11 +14,11 @@ type View = 'day' | 'month' | 'week'
 export interface CalendarProps {
   view: View
   views: View[]
-  events: Event[]
+  events: EventInput[]
   disabled?: boolean
   onDateClick?: (date: Date, allDay: boolean) => void
   onDateRangeSelected?: (startDate: Date, endDate: Date, allDay: boolean) => void
-  onEventClick?: (event: Event) => void
+  onEventClick?: (event: EventInput) => void
   onPrevClick?: () => void
   onNextClick?: () => void
   onTodayClick?: () => void
@@ -32,10 +30,10 @@ const viewToCalendarViewMap = {
   day: 'timeGridDay',
 }
 
-const getEventFromFullCalendarEventApi = (e: EventApi): Event => ({
+const getEventFromFullCalendarEventApi = (e: EventApi): EventInput => ({
   id: e.id,
-  start: e.start,
-  end: e.end,
+  start: e.start || new Date(), // Provide a default value if start is null
+  end: e.end || new Date(), // Provide a default value if end is null
   title: e.title,
   allDay: e.allDay,
 })
@@ -115,12 +113,12 @@ const Calendar = (props: CalendarProps) => {
           click: () => onNavClick('today'),
         },
       }}
-      header={{
+      headerToolbar={{
         left: 'customPrev,customNext customToday',
         center: 'title',
         right: getViewsFromViewsProp(views),
       }}
-      defaultView={getCalendarViewFromViewProp(view)}
+      initialView={getCalendarViewFromViewProp(view)}
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       themeSystem="bootstrap"
       dateClick={(arg) => {

@@ -1,4 +1,4 @@
-import { Table } from '@hospitalrun/components'
+import { Table } from 'components'
 import format from 'date-fns/format'
 import React from 'react'
 

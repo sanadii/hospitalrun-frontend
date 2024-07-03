@@ -1,4 +1,4 @@
-import { Calendar, Button } from '@hospitalrun/components'
+import { Calendar, Button } from 'components'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
